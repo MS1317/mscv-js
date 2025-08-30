@@ -1,18 +1,19 @@
-import UnderConstruction from './components/underConstruction';
+import React,{useState} from 'react';
+import Loader from './components/loader';
 
 const MainApp = () =>{
   return(
-    <div>
-      <h1>Main Site</h1>
-    </div>
+    <>  
+      <Loader/>
+    </>
   );
 };
 
 const App = () => {
   // Set this to 'false' to show your main site
-  const isUnderConstruction= false;
+
   if (isUnderConstruction) {
-    return <UnderConstruction />;
+    return <Loader />;
   }
     return <MainApp />;
 };
