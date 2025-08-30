@@ -1,15 +1,20 @@
-import React from 'react';
-import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import UnderConstruction from './components/underConstruction';
 
-const App = () => {
-  return (
-    <DotLottieReact
-      src="https://lottie.host/5c08e329-9cfd-47f9-bcc7-b8180b6547cb/8X5VLS9VpW.lottie"
-      loop
-      autoplay
-    />
+const MainApp = () =>{
+  return(
+    <div>
+      <h1>Main Site</h1>
+    </div>
   );
 };
 
+const App = () => {
+  // Set this to 'false' to show your main site
+  const isUnderConstruction= true;
+  if (isUnderConstruction) {
+    return <UnderConstruction />;
+  }
+    return <MainApp />;
+};
 
 export default App;
