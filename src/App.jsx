@@ -10,7 +10,7 @@ const MainApp = () =>{
 
 const App = () => {
   // Set this to 'false' to show your main site
-  const isUnderConstruction= true;
+  const isUnderConstruction= false;
   if (isUnderConstruction) {
     return <UnderConstruction />;
   }
