@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SideProfile = ({ closeSideProfile, isProfileOpen }) => {
+const SideProfile = ({ closeSideProfile }) => {
   return (
     <div id="side-profile-parent" className={`side-profile-parent`} style={{ order: 1 }}>
       <div id="mySideProfile" className="side-profile nav-shadow">

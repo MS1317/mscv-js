@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet } from 'react-router-dom'; // Outlet is the placeholder for page content
 import SideNav from './SideNav';
-import SideProfile from './SideProfile';
+import SideProfile from './sideProfile';
 
 // Import your main CSS file
 // import '../App.css'; 
