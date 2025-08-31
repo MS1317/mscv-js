@@ -717,7 +717,7 @@ details[open] ::marker {
   width: 224px !important;
   text-align: left;
 }
-*/ .side-navbar {
+ .side-navbar {
   max-height: inherit;
   background: linear-gradient(
     159deg,
