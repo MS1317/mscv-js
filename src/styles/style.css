@@ -710,7 +710,7 @@ details[open] ::marker {
   );
 }
 
-.serv-item {
+.serv-item { 
   display: none;
   padding: 0px 8px 8px 42px !important;
   margin: 0 !important;
