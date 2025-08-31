@@ -1,3 +1,4 @@
 @import "styles/style.css";
 @import "styles/responsive.css"; 
 @import "styles/override.css" ;
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";

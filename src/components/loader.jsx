@@ -1,6 +1,52 @@
-import React,{useRef,useEffect} from "react";
+import React, { useEffect, useState } from "react";
 
 const Loader = () => {
+    const [showloader, setShowLoader] = useState(true);
+
+    useEffect(() => {
+        if (!showloader) {
+            return;
+        }
+
+        // If the site is under construction, we don't want to hide the loader.
+        if (isUnderConstruction) {
+            return;
+        }
+
+        const hidePreloader = () => {
+            const preloadElement = document.querySelector('.preload');
+            const sliceLeft = document.querySelector('.slice-left');
+            const sliceRight = document.querySelector('.slice-right');
+
+            if (preloadElement && sliceLeft && sliceRight) {
+                sliceLeft.classList.add('slice-exit-left');
+                sliceRight.classList.add('slice-exit-right');
+
+                const onAnimationEnd = () => {
+                    if (preloadElement.parentElement) {
+                        preloadElement.parentElement.removeChild(preloadElement);
+                    }
+                    sliceLeft.removeEventListener('animationend', onAnimationEnd);
+                };
+                sliceLeft.addEventListener('animationend', onAnimationEnd);
+            }
+        };
+
+        const handleLoad = () => {
+            setTimeout(hidePreloader, 1200);
+        };
+
+        window.addEventListener('load', handleLoad);
+
+        return () => {
+            window.removeEventListener('load', handleLoad);
+        };
+
+    }, [showloader]);
+
+    if (!showloader) {
+        return null;
+    }
 
     return (
         <div className="preload">
@@ -25,16 +71,17 @@ const Loader = () => {
                     <div className="slice-container slice-right">
                         <div>
                             <p className="powered">Powered by <a href="https://techituber.com/"><span>Techi</span>Tuber</a></p>
-                            {isUnderConstruction?
-                            <p className={`powered ${isUnderConstruction?"under-construction-text":" "}`}>Hang on, we are making some changes
-                                <br />
-                            <span>
-                                <a href="mailto:create@techituber.com">
-                                    Urgent?
-                                </a>
-                            </span>
-                            </p>
-                            :""}
+                            {isUnderConstruction && (
+                                <p className="powered under-construction-text">
+                                    Hang on, we are making some changes
+                                    <br />
+                                    <span>
+                                        <a href="mailto:create@techituber.com">
+                                            Urgent?
+                                        </a>
+                                    </span>
+                                </p>
+                            )}
                         </div>
                     </div>
                 </div>

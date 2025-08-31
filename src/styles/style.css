@@ -111,6 +111,9 @@ hr {
 }
 
 .preload {
+  position: absolute;
+  width: 100%;
+  z-index: 99999999;
   overflow: hidden;
   /* background-color: var(--bg); */
   color: var(--fg);
@@ -674,6 +677,30 @@ img {
 details[open] ::marker {
   transition: all 1s;
 } */
+   /* When the side navigation is open */
+   #main.side-nav-open #mySidenav {
+     max-width: 250px!important;
+     width: 100%;
+   }
+
+   #main.side-nav-open #backdrop-filtr,
+   #main.side-nav-open .copyright-parent {
+     background-color: rgba(30, 30, 40, 0.88);
+   }
+
+   #main.side-nav-open #sideProfileBtn {
+     display: none!important;
+   }
+
+   #main.side-nav-open #content {
+     left: -100px!important;
+     z-index: -1!important;
+   }
+
+   #main.side-nav-open #hero-sec {
+     margin-right: 81px;
+   }
+
 .side-navbar {
   max-height: inherit;
   background: linear-gradient(
@@ -843,7 +870,7 @@ details[open] ::marker {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url("../assets/images/bg2.jpg");
+  background-image: url("../assets/home-page/bg2.jpg");
 }
 
 #main .hero-img {

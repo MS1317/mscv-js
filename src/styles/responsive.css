@@ -184,17 +184,7 @@
     display: none;
   }
 
-  .side-profile-parent .profile-cont {
-    order: 1;
-  }
-
-  .side-profile-parent .sidebar-scrollable-menu {
-    order: 3;
-  }
-
-  .side-profile-parent .social-links {
-    order: 2;
-  }
+  
 
   .side-profile-parent .side-details {
     margin: 0px;
@@ -250,6 +240,49 @@
   .side-navbar.mh-100 .btOn {
     display: none;
   }
+  .side-profile-parent{
+    transition: 1s!important;
+  }
+     #main.side-profile-open .side-profile-parent {
+       /* This makes the profile container take up space */
+       max-width: 250px;
+       width: 100%;
+       transition: all 1s;
+       display: block;
+     }
+
+     #main.side-profile-open #mySideProfile {
+       /* This ensures the profile itself is visible */
+       max-width: 250px;
+       width: 100%;
+       transition: all 1s;
+     }
+
+     /* When the side profile is open, we hide the main navigation hamburger button */
+     #main.side-profile-open #navBtn {
+       display: none;
+     }
+
+     /* This creates the dark overlay effect behind the content */
+     #main.side-profile-open #backdrop-filtr,
+     #main.side-profile-open .copyright-parent {
+       background-color: rgba(30, 30, 40, 0.88);
+     }
+
+     /* This prevents interaction with the main content when the profile is open */
+     #main.side-profile-open #content {
+       z-index: -1;
+     }
+
+     /* 
+      * By default, the side profile should be hidden on small screens
+      * until the toggle button is clicked.
+      */
+     .side-profile-parent {
+       width: 0;
+       transition: all 1s;;
+     }
+
 }
 
 @media (max-width: 969px) {
@@ -279,8 +312,9 @@
   }
 
   .side-profile {
-    transition: 1s;
-    width: 0;
+    max-width: 250px!important;
+    transition: 1s!important;
+    width: 0%;
   }
 
   .side-details {
