@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Loader from './components/loader';
 import Layout from './components/layout';
 import HomePage from './pages/HomePage';
+import ServicePage from './pages/ServicePage'; // Import ServicePage
+
 
 // MainApp is now the actual application with all the routing.
 const MainApp = () => {
@@ -16,7 +18,8 @@ const MainApp = () => {
           <Route index element={<HomePage />} />
 
           {/* Add future pages here */}
-          {/* e.g., <Route path="about" element={<AboutPage />} /> */}
+          <Route path="services/:serviceName" element={<ServicePage />} />
+          {/* e.g., <Route path="about" to={<AboutPage />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

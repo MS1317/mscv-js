@@ -1,27 +1,18 @@
 
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Use Link for internal navigation
 import useTimeline from '../components/useTimeline';
 
-// Placeholder data that replaces the fetch_data.php script
-const cardData = [
-  {
-    page: 'web',
-    icon_src: '/assets/icons/front-end.png',
-    title: 'Web Development',
-    description: 'Creating stunning and functional websites.'
-  },
-  {
-    page: 'video-editing',
-    icon_src: '/assets/icons/service-icons/video-editing-svgrepo-com.svg',
-    title: 'Video Editing',
-    description: 'Editing and producing high-quality videos.'
-  }
-  // Add more card data objects as needed
-];
-
 const HomePage = () => {
-    const timelineRef = useTimeline({ threshold: 0.6 });
+  const [cardData, setCardData] = useState([]);
+  const timelineRef = useTimeline({ threshold: 0.6 });
+
+  useEffect(() => {
+    fetch('http://localhost:3001/api/service-cards')
+      .then(response => response.json())
+      .then(data => setCardData(data))
+      .catch(error => console.error('Error fetching service cards:', error));
+  }, []);
 
   // This useEffect hook will run once when the component mounts.
   // It's where you would place the logic for the typing effect.

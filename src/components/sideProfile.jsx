@@ -1,6 +1,14 @@
 import React from 'react';
 
 const SideProfile = ({ closeSideProfile }) => {
+  const birthDate = new Date('2000-05-13'); // YYYY-MM-DD
+  const today = new Date();
+  let age = today.getFullYear() - birthDate.getFullYear();
+  const monthDifference = today.getMonth() - birthDate.getMonth();
+  if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+    age--;
+  }
+
   return (
     <div id="side-profile-parent" className={`side-profile-parent`} style={{ order: 1 }}>
       <div id="mySideProfile" className="side-profile nav-shadow">
@@ -47,7 +55,7 @@ const SideProfile = ({ closeSideProfile }) => {
                 </tr>
                 <tr>
                   <td className="details-head">Age:</td>
-                  <td className="details-data">23</td>
+                  <td className="details-data">{age}</td>
                 </tr>
               </tbody>
             </table>
