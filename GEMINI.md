@@ -11,17 +11,32 @@ This is a React single-page application built with Vite. It is deployed on Verce
 *   **Backend:** Node.js with Express.js
 *   **Database:** Vercel Postgres (Neon) with the `pg` driver
 *   **Environment Variables:** dotenv
-*   **Development Server:** Nodemon
 
-**Architecture:**
+---
 
-The project follows a standard single-page application (SPA) architecture. The frontend is a Vite-powered React app. The backend is a single Node.js/Express server (`server.js`) that connects to a Postgres database and serves a JSON API.
+# Architecture
 
-During local development, Vite's dev server proxies API requests to the backend server.
+The project follows a standard single-page application (SPA) architecture, with a Vite-powered React frontend and a Node.js/Express backend (`server.js`).
 
-# Building and Running
+## Database Environments
 
-To set up and run the project locally, you must have the [Vercel CLI](https://vercel.com/docs/cli) installed.
+This project uses Vercel Postgres's branching feature to maintain separate, isolated databases for different environments. This is a best practice that protects the production data.
+
+-   **Production Database:** Used by the deployment on the `main` git branch.
+-   **Preview/Development Database:** Each git branch (e.g., `dev`) has its own separate database branch. This is used for both preview deployments on Vercel and for local development.
+
+## Routing
+
+API request routing is handled differently depending on the environment:
+
+-   **Local Development:** The `vite.config.js` file uses a `proxy` to forward any requests from the frontend (e.g., `localhost:5173/api/...`) to the backend server running separately (e.g., on `localhost:3001`).
+-   **Vercel Deployment (Preview/Production):** A `vercel.json` file tells the Vercel platform how to route requests. It directs all incoming requests for `/api/...` to be handled by the `server.js` serverless function.
+
+---
+
+# Local Development Setup
+
+To run the project locally, you must have the [Vercel CLI](https://vercel.com/docs/cli) installed.
 
 1.  **Install Dependencies:**
 
@@ -38,7 +53,7 @@ To set up and run the project locally, you must have the [Vercel CLI](https://ve
 
 3.  **Pull Environment Variables:**
 
-    Create a local `.env` file with the project's development credentials.
+    Create a local `.env` file. This command pulls the credentials for the database branch that corresponds to your **current git branch**.
     ```bash
     vercel env pull .env
     ```
@@ -56,16 +71,10 @@ To set up and run the project locally, you must have the [Vercel CLI](https://ve
     ```bash
     npm run dev
     ```
-    Your browser should open to the Vite development server (e.g., `http://localhost:5173`).
+    Your browser will open to the Vite development server (e.g., `http://localhost:5173`).
 
-5.  **Build for Production:**
+---
 
-    Vercel handles this automatically on `git push`. To build locally, run:
-    ```bash
-    npm run build
-    ```
+# Deployment
 
-# Development Conventions
-
-*   **API Proxy:** During local development, all API calls to `/api` are automatically forwarded to the backend server on port 3001, as configured in `vite.config.js`.
-*   **Environment Variables:** The project relies on environment variables provided by Vercel for the database connection (e.g., `POSTGRES_URL`). The `.env.example` file is no longer representative of the required variables for local development.
+Deployment is handled automatically by Vercel. Pushing to a branch will create a **preview deployment**, and merging to `main` will update the **production deployment**.
