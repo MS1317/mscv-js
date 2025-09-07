@@ -26,3 +26,6 @@ GEMINI.md
 
 # Environment variables
 .env
+.vercel
+.env*.local
+.env.old

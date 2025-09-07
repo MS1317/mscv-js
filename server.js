@@ -26,18 +26,22 @@ app.get('/api/test-db', async (req, res) => {
 
 app.get('/api/service-cards', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM service_cards');
+    const { rows } = await pool.query('SELECT * FROM service_cards');
+    console.log('Data for service-cards:', rows); // Log the data
     res.json(rows);
   } catch (error) {
+    console.error('Error fetching service-cards:', error);
     res.status(500).json({ success: false, message: 'Failed to fetch service cards', error: error.message });
   }
 });
 
 app.get('/api/web-technologies', async (req, res) => {
   try {
-    const [rows] = await pool.query('SELECT * FROM web_service');
+    const { rows } = await pool.query('SELECT * FROM web_service');
+    console.log('Data for web-technologies:', rows); // Log the data
     res.json(rows);
   } catch (error) {
+    console.error('Error fetching web-technologies:', error);
     res.status(500).json({ success: false, message: 'Failed to fetch web technologies', error: error.message });
   }
 });

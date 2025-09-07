@@ -8,9 +8,8 @@ const ServicePage = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Fetch web technologies only if serviceName is 'web'
-    if (serviceName === 'web') {
-      fetch('http://localhost:3001/api/web-technologies')
+    if (serviceName === 'web-development') {
+      fetch('/api/web-technologies') // Use relative URL
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -41,17 +40,20 @@ const ServicePage = () => {
   return (
     <section className="web-choose">
       {/* <h1>Service: {serviceName}</h1> */}
-      {serviceName === 'web' && (
+      {serviceName === 'web-development' && (
         <div className="web-selector">
           {webTechnologies.length > 0 ? (
             webTechnologies.map((technology) => (
-              <Link to={`/service-detail/${technology["web-link"]}`} key={technology["web-link"]}>
+              // Use technology.name for the link and a proper key
+              <Link to={`/service-detail/${technology.name.toLowerCase()}`} key={technology.id}>
                 <div className="web-card">
                   <div className="web-card-background"
-                    style={{ backgroundImage: `url(../assets/web/${technology["web-icon"]})` }}>
+                    // Use technology.icon_path for the image
+                    style={{ backgroundImage: `url(../${technology.icon_path})` }}>
                     <div className="title-bg">
                       <div className="web-type">
-                        {technology["web-technology"]}
+                        {/* Use technology.name for the title */}
+                        {technology.name}
                       </div>
                     </div>
                   </div>

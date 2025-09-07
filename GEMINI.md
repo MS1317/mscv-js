@@ -1,27 +1,27 @@
 # Project Overview
 
-This is a React single-page application built with Vite. It utilizes several key libraries for its functionality and styling.
+This is a React single-page application built with Vite. It is deployed on Vercel and uses Vercel Postgres (Neon) for its database.
 
 **Key Technologies:**
 
 *   **Frontend Framework:** React
 *   **Build Tool:** Vite
 *   **Styling:** Bootstrap
-*   **JavaScript Library:** jQuery
 *   **Routing:** React Router DOM
-*   **Animations:** Lottie React
 *   **Backend:** Node.js with Express.js
-*   **Database:** MySQL2
+*   **Database:** Vercel Postgres (Neon) with the `pg` driver
 *   **Environment Variables:** dotenv
 *   **Development Server:** Nodemon
 
 **Architecture:**
 
-The project follows a standard single-page application (SPA) architecture, with frontend components organized under the `src/components` directory and pages under `src/pages`. The backend is implemented with Node.js and Express.js (`server.js`) and interacts with a MySQL database (`db.js`).
+The project follows a standard single-page application (SPA) architecture. The frontend is a Vite-powered React app. The backend is a single Node.js/Express server (`server.js`) that connects to a Postgres database and serves a JSON API.
+
+During local development, Vite's dev server proxies API requests to the backend server.
 
 # Building and Running
 
-To set up and run the project locally, follow these steps:
+To set up and run the project locally, you must have the [Vercel CLI](https://vercel.com/docs/cli) installed.
 
 1.  **Install Dependencies:**
 
@@ -29,39 +29,43 @@ To set up and run the project locally, follow these steps:
     npm install
     ```
 
-2.  **Run Frontend in Development Mode:**
+2.  **Link to Vercel Project:**
 
-    Starts the development server with hot module replacement.
-
+    Connect your local repository to the project on Vercel. This is a one-time setup.
     ```bash
-    npm run dev
+    vercel link
     ```
 
-3.  **Run Backend Server:**
+3.  **Pull Environment Variables:**
 
-    Starts the Node.js backend server with nodemon for automatic restarts.
+    Create a local `.env` file with the project's development credentials.
+    ```bash
+    vercel env pull .env
+    ```
 
+4.  **Run the Development Servers:**
+
+    You need to run the backend and frontend servers in two separate terminals.
+
+    **In Terminal 1, start the backend server:**
     ```bash
     npm run server
     ```
 
-4.  **Build for Production:**
+    **In Terminal 2, start the frontend server:**
+    ```bash
+    npm run dev
+    ```
+    Your browser should open to the Vite development server (e.g., `http://localhost:5173`).
 
-    Compiles the project for production deployment.
+5.  **Build for Production:**
 
+    Vercel handles this automatically on `git push`. To build locally, run:
     ```bash
     npm run build
     ```
 
-5.  **Preview Production Build:**
-
-    Serves the production build locally for testing.
-
-    ```bash
-    npm run preview
-    ```
-
 # Development Conventions
 
-*   **Linting:** ESLint is configured to maintain code quality and consistency. It uses recommended rules for JavaScript, React Hooks, and Vite, and is configured for both browser and Node.js environments. A custom rule `no-unused-vars` is also in place.
-*   **Environment Variables:** The `.env.example` file outlines the environment variables used. These include `PORT` for the backend server, database credentials (`DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_DATABASE`), and `VITE_UNDER_CONSTRUCTION` for frontend behavior.
+*   **API Proxy:** During local development, all API calls to `/api` are automatically forwarded to the backend server on port 3001, as configured in `vite.config.js`.
+*   **Environment Variables:** The project relies on environment variables provided by Vercel for the database connection (e.g., `POSTGRES_URL`). The `.env.example` file is no longer representative of the required variables for local development.

@@ -8,7 +8,7 @@ const HomePage = () => {
   const timelineRef = useTimeline({ threshold: 0.6 });
 
   useEffect(() => {
-    fetch('http://localhost:3001/api/service-cards')
+    fetch('/api/service-cards')
       .then(response => response.json())
       .then(data => setCardData(data))
       .catch(error => console.error('Error fetching service cards:', error));
@@ -63,7 +63,7 @@ const HomePage = () => {
                 <Link className="service-card" to={`/services/${data.page}`} key={index}>
                   <div>
                     <div className="serv-icon">
-                      <img className="serv-img" src={data.icon_src} alt="" />
+                      <img className="serv-img" src={data.icon_path} alt="" />
                       <div className="big-circle"></div>
                     </div>
                     <h5>{data.title}</h5>
