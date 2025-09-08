@@ -8,6 +8,7 @@ This is a React single-page application built with Vite. It is deployed on Verce
 *   **Build Tool:** Vite
 *   **Styling:** Bootstrap
 *   **Routing:** React Router DOM
+*   **Loading Skeleton:** React Loading Skeleton
 *   **Backend:** Node.js with Express.js
 *   **Database:** Vercel Postgres (Neon) with the `pg` driver
 *   **Environment Variables:** dotenv

@@ -2,16 +2,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'; // Use Link for internal navigation
 import useTimeline from '../components/useTimeline';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const HomePage = () => {
   const [cardData, setCardData] = useState([]);
   const timelineRef = useTimeline({ threshold: 0.6 });
+  const [loading,setLoading]=useState(true);
 
   useEffect(() => {
     fetch('/api/service-cards')
       .then(response => response.json())
-      .then(data => setCardData(data))
-      .catch(error => console.error('Error fetching service cards:', error));
+      .then(data => {
+        setCardData(data);
+        setLoading(false);
+    })
+      .catch(error => {console.error('Error fetching service cards:', error);
+      setLoading(false);
+  });
   }, []);
 
   // This useEffect hook will run once when the component mounts.
@@ -60,20 +68,50 @@ const HomePage = () => {
           <div className="service-content">
             {cardData.length > 0 ? (
               cardData.map((data, index) => (
-                <Link className="service-card" to={`/services/${data.page}`} key={index}>
-                  <div>
-                    <div className="serv-icon">
+              <div className="service-card" key={index}>
+                <div>
+                  <div className="serv-icon">
+                    {loading ? (
+                      <Skeleton circle width={50} height={50} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" />
+                    ) : (
                       <img className="serv-img" src={data.icon_path} alt="" />
-                      <div className="big-circle"></div>
-                    </div>
-                    <h5>{data.title}</h5>
-                    <p>{data.description}</p>
+                    )}
+                    <div className="big-circle"></div>
                   </div>
-                  <button>View more</button>
-                </Link>
+
+                  <h5>
+                    {loading ? <Skeleton width={120} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" /> : data.title}
+                  </h5>
+
+                  <p>
+                    {loading ? <Skeleton count={2} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" /> : data.description}
+                  </p>
+                </div>
+
+                {loading ? (
+                  <Skeleton width={80} height={30} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" />
+                ) : (
+                  <Link to={`/services/${data.page}`}>
+                    <button>View more</button>
+                  </Link>
+                )}
+              </div>
               ))
             ) : (
-              <p>No Data Found</p>
+              // Optionally render empty skeleton cards while loading
+              loading && Array(2).fill().map((_, i) => (
+                <div className="service-card" key={i}>
+                  <div>
+                    <div className="serv-icon">
+                      <Skeleton circle baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" width={50} height={50} />
+                      <div className="big-circle"></div>
+                    </div>
+                    <h5><Skeleton baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" width={120} /></h5>
+                    <p><Skeleton baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" count={2} /></p>
+                  </div>
+                  <Skeleton baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" width={80} height={30} />
+                </div>
+              ))
             )}
           </div>
         </section>

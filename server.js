@@ -1,8 +1,17 @@
-import 'dotenv/config';
-// Forcing a new deployment
 import express from 'express';
 import cors from 'cors';
 import pool from './db.js';
+
+// server.js
+import dotenv from "dotenv";
+
+// pick the env file based on NODE_ENV
+const envFile =
+  process.env.NODE_ENV === "development"
+    ? ".env.local.dev"
+    : ".env.local.prod";
+
+dotenv.config({ path: envFile });
 
 const app = express();
 
