@@ -1,7 +1,0 @@
-feat: Implement skeleton loading for service cards
-
-- Adds `react-loading-skeleton` to provide a better user experience while data is being fetched.
-- Implements the skeleton loading UI in `HomePage.jsx`.
-- Updates `GEMINI.md` to include the new dependency.
-- Configures the database connection to work with Neon.
-- Adds environment-specific `.env` file loading in `server.js`.
