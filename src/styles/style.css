@@ -1497,6 +1497,10 @@ ul.skills li.more span:hover {
   column-gap: 10px;
 }
 
+.service-content>a{
+  display: flex!important;
+}
+
 .serv-icon {
   transition: all 0.8s;
   position: relative;

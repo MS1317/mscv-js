@@ -68,11 +68,12 @@ const HomePage = () => {
           <div className="service-content">
             {cardData.length > 0 ? (
               cardData.map((data, index) => (
-              <div className="service-card" key={index}>
+              <Link className="service-card" to={`/services/${data.page}`}>
+              <div key={index}>
                 <div>
                   <div className="serv-icon">
                     {loading ? (
-                      <Skeleton circle width={50} height={50} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" />
+                      <Skeleton circle width={50} height={50} baseColor="#2d2d39" highlightColor="#7d7c7cff" />
                     ) : (
                       <img className="serv-img" src={data.icon_path} alt="" />
                     )}
@@ -80,22 +81,23 @@ const HomePage = () => {
                   </div>
 
                   <h5>
-                    {loading ? <Skeleton width={120} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" /> : data.title}
+                    {loading ? <Skeleton width={120} baseColor="#2d2d39" highlightColor="#7d7c7cff" /> : data.title}
                   </h5>
 
                   <p>
-                    {loading ? <Skeleton count={2} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" /> : data.description}
+                    {loading ? <Skeleton count={5} baseColor="#2d2d39" highlightColor="#7d7c7cff" /> : data.description}
                   </p>
                 </div>
 
                 {loading ? (
-                  <Skeleton width={80} height={30} baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" />
+                  <Skeleton width={80} height={30} baseColor="#2d2d39" highlightColor="#7d7c7cff" />
                 ) : (
                   <Link to={`/services/${data.page}`}>
                     <button>View more</button>
                   </Link>
                 )}
               </div>
+              </Link>
               ))
             ) : (
               // Optionally render empty skeleton cards while loading
@@ -103,13 +105,13 @@ const HomePage = () => {
                 <div className="service-card" key={i}>
                   <div>
                     <div className="serv-icon">
-                      <Skeleton circle baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" width={50} height={50} />
-                      <div className="big-circle"></div>
+                      <Skeleton circle baseColor="#2d2d39" highlightColor="#7d7c7cff" width={50} height={50} />
+                      {/* <div className="big-circle"></div> */}
                     </div>
-                    <h5><Skeleton baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" width={120} /></h5>
-                    <p><Skeleton baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" count={2} /></p>
+                    <h5><Skeleton baseColor="#2d2d39" highlightColor="#7d7c7cff" width={120} /></h5>
+                    <p><Skeleton baseColor="#2d2d39" highlightColor="#7d7c7cff" count={5} /></p>
                   </div>
-                  <Skeleton baseColor="#c2c2c2ff" highlightColor="#a6a6a6ff" width={80} height={30} />
+                  <Skeleton baseColor="#2d2d39" highlightColor="#7d7c7cff" width={80} height={30} />
                 </div>
               ))
             )}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import Skeleton from 'react-loading-skeleton';
 import { useParams, Link } from 'react-router-dom'; // Import Link for navigation
+import 'react-loading-skeleton/dist/skeleton.css';
 
 const ServicePage = () => {
   const { serviceName } = useParams();
@@ -29,17 +31,12 @@ const ServicePage = () => {
     }
   }, [serviceName]); // Re-run effect if serviceName changes
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
   if (error) {
     return <div>Error: {error.message}</div>;
   }
 
   return (
     <section className="web-choose">
-      {/* <h1>Service: {serviceName}</h1> */}
       {serviceName === 'web-development' && (
         <div className="web-selector">
           {webTechnologies.length > 0 ? (
@@ -47,26 +44,51 @@ const ServicePage = () => {
               // Use technology.name for the link and a proper key
               <Link to={`/service-detail/${technology.name.toLowerCase()}`} key={technology.id}>
                 <div className="web-card">
-                  <div className="web-card-background"
-                    // Use technology.icon_path for the image
-                    style={{ backgroundImage: `url(../${technology.icon_path})` }}>
-                    <div className="title-bg">
-                      <div className="web-type">
-                        {/* Use technology.name for the title */}
-                        {technology.name}
+                  {loading ? (
+                    // Skeleton takes the place of background div
+                    <Skeleton
+                      className="web-card-background"
+                      height={200} // match the height of your background card
+                      borderRadius={12}
+                    />
+                  ) : (
+                    <div
+                      className="web-card-background"
+                      style={{ backgroundImage: `url(../${technology.icon_path})` }}
+                    >
+                      <div className="title-bg">
+                        <div className="web-type">{technology.name}</div>
                       </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </Link>
             ))
           ) : (
-            <p>No Data Found</p>
+            // Optionally render empty skeleton cards while loading
+            loading && Array(4).fill().map((_,i)=>(
+              <Link key={i} to="#">
+                <div className="web-card">
+                  {
+                    <>
+                    <Skeleton
+                      className="web-card-background"
+                      baseColor="#2d2d39"
+                      highlightColor="#7d7c7cff"
+                      height={200} // match the height of your background card
+                    />
+                      <div className="title-bg">
+                        {/* <div className="web-type">{technology.name}</div> */}
+                      </div>
+                    </>
+                  }
+                </div>
+              </Link>
+            ))
           )}
-        </div>
-      )}
-      {/* More content for other services can go here */}
-    </section>
+          </div>
+        )}
+      </section>
   );
 };
 
