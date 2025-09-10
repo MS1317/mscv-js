@@ -55,6 +55,18 @@ app.get('/api/web-technologies', async (req, res) => {
   }
 });
 
+app.get('/api/projects/:technology', async (req, res) => {
+  const { technology } = req.params;
+  try {
+    const { rows } = await pool.query('SELECT * FROM projects WHERE technology = $1', [technology]);
+    console.log(`Data for projects/${technology}:`, rows);
+    res.json(rows);
+  } catch (error) {
+    console.error(`Error fetching projects/${technology}:`, error);
+    res.status(500).json({ success: false, message: `Failed to fetch projects for ${technology}`, error: error.message });
+  }
+});
+
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {

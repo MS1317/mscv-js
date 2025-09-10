@@ -14,7 +14,8 @@ const HomePage = () => {
     fetch('/api/service-cards')
       .then(response => response.json())
       .then(data => {
-        setCardData(data);
+        const sorted = data.sort((a,b) => a.id - b.id);
+        setCardData(sorted)
         setLoading(false);
     })
       .catch(error => {console.error('Error fetching service cards:', error);

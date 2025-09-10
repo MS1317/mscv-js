@@ -35,6 +35,16 @@ API request routing is handled differently depending on the environment:
 
 ---
 
+# API Endpoints
+
+The `server.js` file defines the following API endpoints:
+
+*   `GET /api/service-cards`: Fetches a list of service cards for the home page.
+*   `GET /api/web-technologies`: Fetches a list of web technologies.
+*   `GET /api/projects/:technology`: Fetches a list of projects for a given technology.
+
+---
+
 # Local Development Setup
 
 To run the project locally, you must have the [Vercel CLI](https://vercel.com/docs/cli) installed.

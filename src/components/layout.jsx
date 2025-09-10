@@ -6,7 +6,7 @@ import Copyright from './copyright';
 
 const Layout = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [isProfileOpen, setIsProfileOpen] = useState(true);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const openNav = () => setIsNavOpen(true);
   const closeNav = () => setIsNavOpen(false);
