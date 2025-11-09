@@ -78,7 +78,7 @@ const PortfolioShowcase = () => {
                   <img
                     src={
                       item.preview
-                        ? "src/assets/portfolio-preview/" + item.preview
+                        ? "/assets/portfolio-preview/" + item.preview
                         : "https://placehold.co/600x400/6e708b/FFF?font=poppins&text=No+Image"
                     }
                     alt={item.name}
@@ -101,4 +101,3 @@ const PortfolioShowcase = () => {
 };
 
 export default PortfolioShowcase;
-  
