@@ -9,6 +9,7 @@ import { HashLink } from 'react-router-hash-link';
 
 const SideNav = ({ openNav, closeNav, isNavOpen }) => {
   return (
+    
     <div className="side-navbar nav-shadow" style={{ order: 3 }}>
       <div className="btOn">
         <div id="navBtn" className="openBtn" onClick={openNav}>&#9776;</div>
