@@ -22,52 +22,43 @@ app.get('/api', (req, res) => {
   res.json({ message: 'Hello from the backend!' });
 });
 
-app.get('/api/test-db', async (req, res) => {
+// Test database connection
+app.get('/api/test-db', async (res) => {
   try {
-    const connection = await pool.getConnection();
-    const [rows] = await connection.query('SELECT 1');
-    connection.release();
-    res.json({ success: true, message: 'Database connection successful', data: rows });
+    const result = await pool.query('SELECT 1');
+    res.json({ success: true, message: 'Database connection successful', data: result.rows });
   } catch (error) {
     res.status(500).json({ success: false, message: 'Database connection failed', error: error.message });
   }
 });
 
-app.get('/api/service-cards', async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM service_cards');
-    console.log('Data for service-cards:', rows); // Log the data
+// Get all categories
+app.get('/api/categories', async (req,  res) => {
+  try{
+    const {rows} = await pool.query('SELECT * FROM web_categories ORDER BY id');
     res.json(rows);
-  } catch (error) {
-    console.error('Error fetching service-cards:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch service cards', error: error.message });
   }
-});
+  catch(error){
+  console.error('Error fetching categories:', error);
+    res.status(500).json({ success: false, message: 'Failed to retrieve categories', error: error.message });
+  }
+})
 
-app.get('/api/web-technologies', async (req, res) => {
-  try {
-    const { rows } = await pool.query('SELECT * FROM web_service');
-    console.log('Data for web-technologies:', rows); // Log the data
+// Get all portfolio items
+app.get('/api/portfolio', async (req, res) =>{
+  try{
+    const { rows} = await pool.query('SELECT * FROM portfolio ORDER BY id');
     res.json(rows);
-  } catch (error) {
-    console.error('Error fetching web-technologies:', error);
-    res.status(500).json({ success: false, message: 'Failed to fetch web technologies', error: error.message });
-  }
-});
 
-app.get('/api/projects/:technology', async (req, res) => {
-  const { technology } = req.params;
-  try {
-    const { rows } = await pool.query('SELECT * FROM projects WHERE technology = $1', [technology]);
-    console.log(`Data for projects/${technology}:`, rows);
-    res.json(rows);
-  } catch (error) {
-    console.error(`Error fetching projects/${technology}:`, error);
-    res.status(500).json({ success: false, message: `Failed to fetch projects for ${technology}`, error: error.message });
+  }catch(error){
+    console.error('Error fetching portfolio items:', error);
+    res.status(500).json({ success: false, message: 'Failed to retrieve portfolio items', error: error.message });
   }
-});
+}) 
+
 
 const PORT = process.env.PORT || 3001;
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

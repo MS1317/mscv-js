@@ -20,14 +20,7 @@ const SideNav = ({ openNav, closeNav, isNavOpen }) => {
           
           {/* Use Link for client-side routing */}
           <Link to="/">Home</Link>
-
-          <div className="service wrapper">
-            <a className="service-drop" href="javascript:void(0)">Services</a>
-            <i className="fa-solid fa-caret-right"></i>
-          </div>
-
-          <Link to="/services/web" className="serv-item">Web</Link>
-          <Link to="/services/video-editing" className="serv-item">Video-Editing</Link>
+          <Link to="#educationCareer">Past History</Link>
         </div>
       </div>
     </div>

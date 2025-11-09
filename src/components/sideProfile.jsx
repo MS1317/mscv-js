@@ -1,5 +1,3 @@
-import React from 'react';
-
 const SideProfile = ({ closeSideProfile }) => {
   const birthDate = new Date('2000-05-13'); // YYYY-MM-DD
   const today = new Date();

@@ -90,6 +90,20 @@
   }
 }
 
+@media (max-width: 575px) {
+    .grid-item {
+    width: 100%!important;
+    position: static !important; /* override Isotope’s absolute positioning */
+    transform: none !important; /* remove Isotope’s translate positioning */
+  }
+
+  .portfolio-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
 @media (max-width: 600px) {
   .hero-img {
     display: none;
@@ -256,7 +270,7 @@
   }
 
   .intro-overlay {
-    margin-top: 39px;
+    margin: 39px 0px; 
     padding: 0px !important;
   }
 
@@ -275,21 +289,22 @@
     display: none;
   }
   .side-profile-parent{
+    width: 100%;
     transition: 1s!important;
+    left: -100%;
   }
      #main.side-profile-open .side-profile-parent {
        /* This makes the profile container take up space */
-       max-width: 250px;
-       width: 100%;
        transition: all 1s;
        display: block;
+       left: 0px;
      }
 
      #main.side-profile-open #mySideProfile {
        /* This ensures the profile itself is visible */
        max-width: 250px;
-       width: 100%;
        transition: all 1s;
+       left: 0px;
      }
 
      /* When the side profile is open, we hide the main navigation hamburger button */
@@ -313,13 +328,13 @@
       * until the toggle button is clicked.
       */
      .side-profile-parent {
-       width: 0;
        transition: all 1s;;
      }
 
 }
 
 @media (max-width: 969px) {
+
   .side-profile-parent {
     position: absolute;
     height: -webkit-fill-available;
@@ -348,7 +363,7 @@
   .side-profile {
     max-width: 250px!important;
     transition: 1s!important;
-    width: 0%;
+    left: -100%;
   }
 
   .side-details {
@@ -356,6 +371,7 @@
   }
 
   .side-details-2 {
+    min-width: 218px;
     overflow: hidden;
   }
 
@@ -385,12 +401,6 @@
     display: flex !important;
     max-height: inherit;
     max-width: 50px !important;
-  }
-}
-
-@media (min-width: 969px) {
-  .side-profile {
-    width: 100% !important;
   }
 }
 

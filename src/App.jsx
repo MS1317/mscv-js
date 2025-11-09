@@ -17,9 +17,6 @@ const MainApp = () => {
           {/* The index route renders HomePage by default inside the Layout */}
           <Route index element={<HomePage />} />
 
-          {/* Add future pages here */}
-          <Route path="services/:serviceName" element={<ServicePage />} />
-          {/* e.g., <Route path="about" to={<AboutPage />} /> */}
         </Route>
       </Routes>
     </BrowserRouter>

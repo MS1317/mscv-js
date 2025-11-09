@@ -38,18 +38,6 @@ const Layout = () => {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 969) {
-        setIsProfileOpen(true);
-      }
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 969) {
         setIsNavOpen(false);
       }
     };
