@@ -2,6 +2,7 @@ import TypewriterIntro from "./typewriter"
 
 export const Hero = () => {
     return (
+        <div id="intro">
         <div id="intro-overlay" className="intro-overlay">
             <div id="hero-sec" className="hero-sec">
                 <div id="hero-overlay" className="hero-overlay">
@@ -20,5 +21,6 @@ export const Hero = () => {
                 <h3 className="projects">Projects Completed</h3>
             </div> */}
         </div>
+    </div>
     )
 }
