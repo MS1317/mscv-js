@@ -5,3 +5,7 @@
 summary{
     text-wrap: nowrap;
 }
+
+.nav-link:focus, .nav-link:hover{
+    color: inherit!important;
+}

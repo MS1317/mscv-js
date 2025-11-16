@@ -16,6 +16,7 @@ import { defineConfig, loadEnv } from 'vite';
         'isUnderConstruction': JSON.stringify(isUnderConstruction)
       },
       server: {
+        host: "0.0.0.0",
         proxy: {
           '/api': {
             target: 'http://localhost:3001',

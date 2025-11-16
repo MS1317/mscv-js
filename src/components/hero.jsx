@@ -11,7 +11,7 @@ export const Hero = () => {
                         <TypewriterIntro />
                         <a href="#" className="hero-btn">Explore</a>
                         <span>
-                            <img className="hero-img" src="/assets/home-page/Untitled-1.png" alt="" />
+                            <img className="hero-img" src="/assets/home-page/my-potrait.png" alt="" />
                         </span>
                     </div>
                 </div>

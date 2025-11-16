@@ -32,17 +32,12 @@ const Loader = () => {
             }
         };
 
-        const handleLoad = () => {
-            setTimeout(hidePreloader, 1200);
-        };
+        const timer =setTimeout(()=>{
+            hidePreloader();
+        }, 2000);
+        return () => clearTimeout(timer);
 
-        window.addEventListener('load', handleLoad);
-
-        return () => {
-            window.removeEventListener('load', handleLoad);
-        };
-
-    }, [showloader]);
+    }, []);
 
     if (!showloader) {
         return null;
