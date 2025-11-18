@@ -59,7 +59,6 @@ const SideProfile = ({ closeSideProfile }) => {
             </table>
           </div>
 
-          <hr />
 
           {/* Note: The circle-progress element is a custom element. 
               You will need to find a React equivalent library for this, 

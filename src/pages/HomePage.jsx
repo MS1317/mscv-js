@@ -1,5 +1,4 @@
 
-import React, { useState, useEffect } from 'react';
 import { Timeline } from '../components/timeline';
 import { Hero } from '../components/hero';
 import PortfolioShowcase from '../components/PortfolioShowcase';
@@ -20,16 +19,25 @@ const HomePage = () => {
       </div>
 
       {/* Testimonial Section */}
-      <TestimonialSlider/>
+      <div id="testimonial">
+        <TestimonialSlider/>
+      </div>
 
       {/* Services Section */}
-      <PortfolioShowcase />
+      <div id="portfolios">
+        <PortfolioShowcase />
+      </div>
       
       {/* Contact Information Section */}
-      <ContactInformation />
+      
+      <div id="contactInformation">
+        <ContactInformation />
+      </div>
       
       {/* Contact Section */}
+      <div id="contact">
         <Contact />
+      </div>
     </>
   );
 };

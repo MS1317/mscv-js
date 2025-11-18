@@ -1,11 +1,4 @@
-
-import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link for navigation
 import { HashLink } from 'react-router-hash-link';
-
-
-// Note: The `onclick` functions for opening/closing the nav and the service dropdown
-// will need to be implemented in your main layout component.
 
 const SideNav = ({ openNav, closeNav, isNavOpen }) => {
   return (
@@ -17,7 +10,7 @@ const SideNav = ({ openNav, closeNav, isNavOpen }) => {
       <div className="active-page">
         <p></p>
       </div>
-      <div id="mySidenav" className="sidenav" style={{ width: isNavOpen ? '250px' : '0px' }}>
+      <div id="mySidenav" className="sidenav" style={{ right: isNavOpen ? '0px' : '-255px' }}>
         <div className="sidebar-content">
           <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
           
@@ -25,8 +18,17 @@ const SideNav = ({ openNav, closeNav, isNavOpen }) => {
             Intro
             </HashLink>
           <HashLink smooth to="#educationCareer">
-            Past History
-          </HashLink>        
+            My Journey
+          </HashLink>
+          <HashLink smooth to="#testimonial">  
+            Testimonials
+          </HashLink>
+          <HashLink smooth to="#portfolios">
+            Portfolio
+          </HashLink>
+          <HashLink smooth to="#contactInformation">
+            Contact
+          </HashLink>    
         </div>
       </div>
     </div>

@@ -28,10 +28,6 @@ body {
   background-color: rgb(25 25 35);
 }
 
-/* #main{
-    max-height: 96vh;
-} */
-
 .content,
 .intro-sec {
   width: -webkit-fill-available;
@@ -758,10 +754,6 @@ details[open] ::marker {
   transition: all 1s;
 } */
 /* When the side navigation is open */
-#main.side-nav-open #mySidenav {
-  max-width: 250px !important;
-  width: 100%;
-}
 
 #main.side-nav-open #backdrop-filtr,
 #main.side-nav-open .copyright-parent {
@@ -813,7 +805,7 @@ details[open] ::marker {
   height: 100vh;
   background-color: #20202a;
   transition: 1s;
-  width: 0;
+  width: 250px;
   position: absolute;
   top: 0;
   right: 0px;
@@ -953,13 +945,13 @@ details[open] ::marker {
 }
 
 #main .hero-img {
-    transform: scale(1.05);
-    position: absolute;
-    top: -10%;
-    right: 0%;
-    max-width: 235px;
-    width: 100%;
-    height: auto;
+  transform: scale(1.05);
+  position: absolute;
+  top: -10%;
+  right: 0%;
+  max-width: 235px;
+  width: 100%;
+  height: auto;
 }
 
 #main .hero-overlay {
@@ -1030,7 +1022,7 @@ details[open] ::marker {
   color: #f43333;
   font-weight: bold;
   text-shadow: 1px 1px 2px black;
-  font-family: "Courier New", Courier, monospace; 
+  font-family: "Courier New", Courier, monospace;
 }
 
 #main .effect-wrapper {
@@ -1070,7 +1062,8 @@ details[open] ::marker {
 }
 
 .typed-code span::after {
-  color: #fff !important; /* force white cursor */
+  color: #fff !important;
+  /* force white cursor */
 }
 
 #main .stats {
@@ -1081,7 +1074,7 @@ details[open] ::marker {
 
 #main {
   /* height: 96dvh; */
-  overflow-y: hidden;
+  overflow: hidden;
   max-width: 1400px;
   position: relative;
   margin-left: auto !important;
@@ -1156,6 +1149,7 @@ details[open] ::marker {
 }
 
 .side-details {
+  box-shadow: 0px 0px 5px 6px #1111177a;
   margin: 5px;
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -1538,6 +1532,8 @@ ul.skills li.more span:hover {
   flex-wrap: nowrap;
   justify-content: center;
   position: relative;
+  box-shadow: 0px 0px 5px 6px #1111177a;
+
 }
 
 /*-------------------------------------------------- Side Profile End --------------------------------------------------*/
@@ -2332,21 +2328,121 @@ dialog {
   gap: 1.5rem;
   position: relative;
 }
+
 .grid-item {
   max-width: 526px;
-  position: relative; /* Isotope sets this anyway */
+  position: relative;
+  /* Isotope sets this anyway */
 }
+
 .portfolio-section {
-  padding: 3rem 0;
+  padding: 3rem 20px;
   background-color: #2c2d3a;
 }
 
-.portfolio-section .container{
-  padding: 0 2.5%;
+.contact-parent {
+  padding: 2.5%;
 }
 
-.contact-parent{
-  padding: 2.5%;
+/* Contact */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out;
+}
+
+.blur-effect {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.send-text{
+  color: white;
+}
+
+.form-group-hover {
+  transition: transform 0.3s ease;
+}
+
+.form-group-hover:hover {
+  transform: translateX(4px);
+}
+
+.input-custom::placeholder {
+  color: #6b7280;
+}
+
+.input-custom:focus {
+  outline: none;
+}
+
+.input-focused {
+  transform: scale(1.02);
+}
+
+.input-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  transition: width 0.3s ease;
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  font-weight: 700;
+  border: none;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 20px 40px rgba(220, 53, 69, 0.5);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.button-gradient {
+  background: linear-gradient(90deg, #c82333 0%, #9945ff 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.submit-btn:hover .button-gradient {
+  opacity: 1;
+}
+
+.send-icon {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover .send-icon {
+  transform: translateX(4px);
 }
 
 
@@ -2470,12 +2566,12 @@ dialog {
   justify-content: center;
   min-height: 100vh;
 }
+
 /* Testimonial Section */
 .testimonial-section {
-  background-color: #1a1d29;
-  min-height: 100vh;
   padding: 80px 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  box-shadow: inset 0px 0px 5px 6px #1111177a;
 }
 
 /* Section Title */
@@ -2495,7 +2591,7 @@ dialog {
 
 /* Testimonial Slide */
 .testimonial-slide {
-  padding: 0 15px;
+  padding: 65px 2%;
 }
 
 /* Testimonial Card */
@@ -2618,7 +2714,7 @@ dialog {
   z-index: 10;
 }
 
-.slick-slide > div {
+.slick-slide>div {
   height: 100%;
   display: flex;
 }
@@ -2630,37 +2726,37 @@ dialog {
 
 .slick-dots {
   transform: scale(0.5);
-  bottom: -10px!important;
+  bottom: -10px !important;
   display: flex !important;
   justify-content: center;
   align-items: center;
   gap: 8px;
-  position: relative!important;
+  position: relative !important;
 }
 
 .slick-dots li {
-  width: 40px!important;
+  width: 40px !important;
   margin: 0;
   height: auto;
 }
 
 .slick-dots li button {
-  display: flex!important;
+  display: flex !important;
   justify-content: center;
-  width: 40px!important;
+  width: 40px !important;
   height: 12px;
   padding: 0;
 }
 
 .slick-dots li button:before {
-  content: ' '!important;
+  content: ' ' !important;
   width: 12px;
   height: 12px;
   background-color: #ff4d6d;
   border-radius: 6px;
   opacity: 0.3;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative!important;
+  position: relative !important;
   display: inline-block;
   top: 0;
   left: 0;
@@ -2694,6 +2790,86 @@ dialog {
   right: 0;
   z-index: 1;
 }
+
+/* Contact Info */
+/* Background */
+.bg-dark-custom {
+  padding: 0px 20px;
+  box-shadow: inset 0px 0px 5px 6px #1111177a;
+}
+
+/* Title */
+.title-spacing {
+  letter-spacing: -0.5px;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Contact Card */
+.contact-card {
+  background: linear-gradient(145deg, #2a2d3a 0%, #23262f 100%);
+  border-radius: 20px;
+  padding: 50px 35px;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+  transition: all 0.4s ease;
+  height: 100%;
+}
+
+.contact-card:hover {
+  transform: translateY(-10px);
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 30px rgba(239, 68, 68, 0.1);
+}
+
+/* Card Glow Effect */
+.card-glow {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Icon Badge */
+.icon-badge {
+  padding: 12px 20px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 10px;
+}
+
+/* Card Content */
+.card-content {
+  z-index: 1;
+}
+
+/* Label Text */
+.label-text {
+  color: #6b7280;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+/* Value Text Sizes */
+.value-text {
+  font-size: 1.3rem;
+}
+
+.value-text-small {
+  font-size: 1.1rem;
+}
+
+.value-text-medium {
+  font-size: 1.15rem;
+}
+
+/* End Contact Info */
 
 /* Responsive Design */
 @media (max-width: 1200px) {

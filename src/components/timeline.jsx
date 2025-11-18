@@ -1,6 +1,5 @@
 import useTimeline from '../components/useTimeline';
 
-
 export const Timeline = () => {
     const timelineRef = useTimeline({ threshold: 0.6 });
 

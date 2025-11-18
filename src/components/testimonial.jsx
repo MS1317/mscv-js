@@ -1,4 +1,3 @@
-import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -73,7 +72,7 @@ export default function TestimonialSlider() {
   return (
     <div className="testimonial-section">
       <div className="container">
-        <div className="text-center mb-5">
+        <div className="text-center mb-3">
           <h3 className="testimonial-title">What Clients Say</h3>
           <p className="testimonial-subtitle">
             Don't just take our word for it - hear from some of our satisfied clients

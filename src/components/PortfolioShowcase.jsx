@@ -46,9 +46,12 @@ const PortfolioShowcase = () => {
   return (
     <section className="portfolio-section">
       <div className="container">
+        <h2 className="text-white fw-bold mb-3 title-spacing">
+          Portfolio <span className="gradient-text">Showcase</span>
+        </h2>
         {/* Category Navigation */}
         <nav className="portfolio-nav mb-5">
-          <ul className="nav justify-content-center gap-4">
+          <ul className="nav gap-4">
             {categories.map((category) => (
               <li key={category.id} className="nav-item">
                 <button

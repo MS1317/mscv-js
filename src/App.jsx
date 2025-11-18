@@ -1,11 +1,7 @@
-import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import Loader from './components/loader';
 import Layout from './components/layout';
 import HomePage from './pages/HomePage';
-import ServicePage from './pages/ServicePage'; // Import ServicePage
-
 
 // MainApp is now the actual application with all the routing.
 const MainApp = () => {

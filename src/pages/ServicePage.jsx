@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import { useParams, Link } from 'react-router-dom'; // Import Link for navigation
 import 'react-loading-skeleton/dist/skeleton.css';
