@@ -29,3 +29,4 @@ GEMINI.md
 .vercel
 .env*.local
 .env.old
+server/.env.local.dev

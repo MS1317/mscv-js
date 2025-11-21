@@ -1019,10 +1019,10 @@ details[open] ::marker {
 }
 
 .typed-code {
-  color: #f43333;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px black;
-  font-family: "Courier New", Courier, monospace;
+    color: #ffffff;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000000;
+    font-family: "Courier New", Courier, monospace;
 }
 
 #main .effect-wrapper {

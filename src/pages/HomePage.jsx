@@ -19,9 +19,9 @@ const HomePage = () => {
       </div>
 
       {/* Testimonial Section */}
-      <div id="testimonial">
+      {/* <div id="testimonial">
         <TestimonialSlider/>
-      </div>
+      </div> */}
 
       {/* Services Section */}
       <div id="portfolios">

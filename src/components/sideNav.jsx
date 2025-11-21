@@ -14,19 +14,19 @@ const SideNav = ({ openNav, closeNav, isNavOpen }) => {
         <div className="sidebar-content">
           <a href="javascript:void(0)" className="closebtn" onClick={closeNav}>&times;</a>
           
-          <HashLink smooth to="#intro">
+          <HashLink onClick={closeNav} smooth to="#intro">
             Intro
             </HashLink>
-          <HashLink smooth to="#educationCareer">
+          <HashLink onClick={closeNav} smooth to="#educationCareer">
             My Journey
           </HashLink>
-          <HashLink smooth to="#testimonial">  
+          {/* <HashLink onClick={closeNav} smooth to="#testimonial">  
             Testimonials
-          </HashLink>
-          <HashLink smooth to="#portfolios">
+          </HashLink> */}
+          <HashLink onClick={closeNav} smooth to="#portfolios">
             Portfolio
           </HashLink>
-          <HashLink smooth to="#contactInformation">
+          <HashLink onClick={closeNav} smooth to="#contactInformation">
             Contact
           </HashLink>    
         </div>

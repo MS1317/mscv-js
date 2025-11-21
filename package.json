@@ -8,17 +8,21 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "nodemon server.js"
+    "server": "cross-env NODE_ENV=development nodemon server.js",
+    "start": " cross-env NODE_ENV=development node server.js "
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
     "cors": "^2.8.5",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.2.2",
+    "emailjs-com": "^3.2.0",
     "express": "^5.1.0",
     "isotope-layout": "^3.0.6",
     "jquery": "^3.7.1",
     "lottie-react": "^2.4.1",
     "mysql2": "^3.14.4",
+    "nodemailer": "^7.0.10",
     "pg": "^8.16.3",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
@@ -42,5 +46,18 @@
     "globals": "^16.3.0",
     "nodemon": "^3.1.10",
     "vite": "^7.1.2"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "db.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MS1317/mscv-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MS1317/mscv-js/issues"
+  },
+  "homepage": "https://github.com/MS1317/mscv-js#readme"
 }

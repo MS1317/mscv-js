@@ -2,6 +2,39 @@ import { useState } from 'react';
 
 export default function ContactForm() {
     const [focused, setFocused] = useState('');
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] =useState(null);
+    const handleSubmit = async (e) =>{
+        e.preventDefault()
+        setLoading(true);
+        setStatus(null);
+
+        try{
+            const res = await fetch("/api/send-email",{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify(form)
+            });
+
+            const data = await res.json();
+            if(data.success){
+                setStatus("Message sent successfully!");
+                setForm({name:'',email:'',message:''}); // Clear the form
+            }
+            else{
+                setStatus("Failed to send message. Please try again later.");
+            }
+        }
+        catch (error) { console.error("Error sending message:", error); setStatus("An unexpected error occurred."); }
+        finally { setLoading(false); }
+    }
 
     return (
         <div className="d-flex align-items-center justify-content-center p-4" style={{
@@ -48,6 +81,8 @@ export default function ContactForm() {
                                         <input
                                             type="text"
                                             name="name"
+                                            onChange={(e) =>setForm({...form,name:e.target.value})}
+                                            value={form.name}   
                                             className={`form-control form-control-lg input-custom ${focused === 'name' ? 'input-focused' : ''}`}
                                             placeholder="Manpreet Singh"
                                             onFocus={() => setFocused('name')}
@@ -80,6 +115,8 @@ export default function ContactForm() {
                                         <input
                                             type="email"
                                             name="email"
+                                            value={form.email}
+                                            onChange={(e) =>setForm({...form,email:e.target.value})}
                                             className={`form-control form-control-lg input-custom ${focused === 'email' ? 'input-focused' : ''}`}
                                             placeholder="your.email@example.com"
                                             onFocus={() => setFocused('email')}
@@ -111,6 +148,8 @@ export default function ContactForm() {
                                         <textarea
                                             name="message"
                                             rows="5"
+                                            onChange={(e) =>setForm({...form,message:e.target.value})}
+                                            value={form.message}
                                             className={`form-control form-control-lg input-custom ${focused === 'message' ? 'input-focused' : ''}`}
                                             placeholder="Tell me about your project..."
                                             onFocus={() => setFocused('message')}
@@ -132,7 +171,7 @@ export default function ContactForm() {
                                 </div>
 
                                 {/* Submit Button */}
-                                <button className="btn btn-lg w-100 d-flex align-items-center justify-content-center gap-3 position-relative overflow-hidden submit-btn">
+                                <button type="submit" onClick={handleSubmit} disabled={loading} className="btn btn-lg w-100 d-flex align-items-center justify-content-center gap-3 position-relative overflow-hidden submit-btn">
                                     <div className="button-gradient position-absolute top-0 start-0 w-100 h-100"></div>
                                     <span className="position-relative d-flex align-items-center gap-3 send-text">
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="send-icon">
@@ -141,7 +180,15 @@ export default function ContactForm() {
                                         </svg>
                                         Send Message
                                     </span>
+                                    {loading && (
+                                        <span className="spinner-border spinner-border-sm ms-2" role="status" aria-hidden="true"></span>
+                                    )}
                                 </button>
+                                {status && (
+                                    <div className={`mt-3 alert ${status.includes("successfully") ? "alert-success" : "alert-danger"}`} role="alert">
+                                        {status}
+                                    </div>
+                                )}
                             </div>
                         </div>
 
