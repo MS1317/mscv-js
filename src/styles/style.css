@@ -735,26 +735,6 @@ img {
 
 /*-------------------------------------------------- Sidenav Start --------------------------------------------------*/
 
-/* Style for the <details> content when it's open */
-/* details[open] summary ~ * {
-  animation: drop 0.5s ease-in-out;
-}
-
-/* Define the fadeIn animation */
-/* @keyframes drop {
-  from {
-    transform: translateY(-10px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-details[open] ::marker {
-  transition: all 1s;
-} */
-/* When the side navigation is open */
-
 #main.side-nav-open #backdrop-filtr,
 #main.side-nav-open .copyright-parent {
   background-color: rgba(30, 30, 40, 0.88);
