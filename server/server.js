@@ -4,15 +4,9 @@ import pool from '../db.js';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 
-// pick the env file based on NODE_ENV
-const envFile =
-  process.env.NODE_ENV === "development"
-    ? ".env.local.dev"
-    : ".env.local.prod";
+dotenv.config();
 
-dotenv.config({ path: envFile });
-
-
+console.log("Environment Variables Loaded:", process.env.NODE_ENV);
 
 const app = express();
 
