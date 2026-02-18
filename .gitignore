@@ -29,7 +29,3 @@ dist-ssr
 .env*.local
 .env.old
 server/.env.local.dev
-
-rundev.bat
-runextra.bat
-runserver.bat
