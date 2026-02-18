@@ -4,10 +4,10 @@ export default function ContactInformation() {
             country: 'India',
         },
         communication: {
-            email: 'carter.inbox@mail.com',
+            email: 'contact@techituber.com',
         },
         phone: {
-            personal: '+91 (161) 123 45 678',
+            personal: '+91 8968959722',
         }
     };
 
@@ -42,7 +42,7 @@ export default function ContactInformation() {
 
                         {/* Communication Card */}
                         <div className="col-lg-4 col-md-6">
-                            <div className="contact-card position-relative overflow-hidden">
+                            <a href={`mailto:${contactData.communication.email}`} className="d-block contact-card position-relative overflow-hidden text-decoration-none">
                                 <div className="card-glow"></div>
                                 
                                 <div className="d-inline-block mb-4 icon-badge">
@@ -52,17 +52,17 @@ export default function ContactInformation() {
                                 <div className="position-relative card-content">
                                     <div className="mb-4">
                                         <div className="text-uppercase mb-2 label-text">Email</div>
-                                        <div className="text-white fw-semibold text-break value-text-small">
+                                        <div className="text-white fw-semibold text-break value-text-small text-decoration-none">
                                             {contactData.communication.email}
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
 
                         {/* Phone Numbers Card */}
                         <div className="col-lg-4 col-md-6">
-                            <div className="contact-card position-relative overflow-hidden">
+                            <a href={`tel:${contactData.phone.personal}`} className="d-block text-decoration-none   contact-card position-relative overflow-hidden">
                                 <div className="card-glow"></div>
                                 
                                 <div className="d-inline-block mb-4 icon-badge">
@@ -77,7 +77,7 @@ export default function ContactInformation() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
